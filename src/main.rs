@@ -13,7 +13,7 @@ use waiting::DefaultWaiter;
 fn main() {
     dotenvy::dotenv().unwrap();
     env_logger::init();
-    let path = PathBuf::from_str(&std::env::var("REPO_PATH").unwrap()).unwrap();
+    let path = PathBuf::from_str(&std::env::var("REPO_PATH").expect("Environment variable 'REPO_PATH' missing")).unwrap();
     if path.exists() {
         log::info!("The provided repository path exists. Program will start");
     } else {
